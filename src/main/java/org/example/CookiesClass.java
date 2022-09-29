@@ -36,7 +36,7 @@ public class CookiesClass {
 
     public List<Integer> toList() {
         final List<Cookie> cookieList = new ArrayList<>(a);
-        cookieList.sort(Comparator.comparingInt(o -> o.ordner));
+        cookieList.sort(Comparator.comparingInt(o -> o.order));
         return cookieList.stream()
                          .map(Cookie::getSweetness)
                          .toList();
@@ -56,16 +56,16 @@ public class CookiesClass {
     }
 
     static class Cookie implements Comparable<Cookie> {
-        final int ordner;
+        final int order;
         final int sweetness;
 
-        Cookie(int ordner, int sweetness) {
-            this.ordner = ordner;
+        Cookie(int order, int sweetness) {
+            this.order = order;
             this.sweetness = sweetness;
         }
 
-        int getOrdner() {
-            return ordner;
+        int getOrder() {
+            return order;
         }
 
         int getSweetness() {
@@ -75,24 +75,24 @@ public class CookiesClass {
         @Override
         public int compareTo(Cookie o) {
             final int i = Integer.compare(getSweetness(), o.getSweetness());
-            return i == 0 ? Integer.compare(getOrdner(), o.getOrdner()) : i;
+            return i == 0 ? Integer.compare(getOrder(), o.getOrder()) : i;
         }
 
         @Override
         public int hashCode() {
-            return getOrdner() + getSweetness() * 10^6;
+            return getOrder() + getSweetness() * 10^6;
         }
 
         @Override
         public boolean equals(Object obj) {
             return super.equals(obj) ||
                     obj instanceof Cookie c &&
-                            c.getOrdner() == getOrdner() && c.getSweetness() == getSweetness();
+                            c.getOrder() == getOrder() && c.getSweetness() == getSweetness();
         }
 
         @Override
         public String toString() {
-            return "Cookie[" + getSweetness() + ", " + getOrdner() + "]";
+            return "Cookie[" + getSweetness() + ", " + getOrder() + "]";
         }
     }
 }
