@@ -29,12 +29,23 @@ class CookieTest {
     }
 
     @Test
-    void checkMerging() {
+    void checkFirstMerging() {
         final CookiesClass c = new CookiesClass(List.of(2, 7, 3, 6, 4, 6), 9);
         final int iterations = c.merge();
         assertThat(iterations).isEqualTo(4);
         final var integerList = c.toList();
         assertThat(integerList).containsExactly(40, 20);
+    }
+
+    @Test
+    void checkSecondMerging() {
+        final CookiesClass c = new CookiesClass(List.of(1, 2, 3, 9, 10, 12), 7);
+        final int iterations = c.merge();
+        assertThat(iterations).isEqualTo(2);
+        final var integerList = c.toList();
+        assertThat(integerList)
+                .hasSize(4)
+                .contains(9, 10, 12, 13);
     }
 
     @Test
