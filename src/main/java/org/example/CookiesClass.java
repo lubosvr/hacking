@@ -48,11 +48,11 @@ public class CookiesClass {
     }
 
     @VisibleForTesting
-    void nextIteration(final int iteratio) {
+    void nextIteration(final int iteration) {
         final var first = Optional.ofNullable(a.pollFirst()).orElseThrow().getSweetness();
         final var second = Optional.ofNullable(a.pollFirst()).orElseThrow().getSweetness();
         final var mixedSweetness = first + 2 * second;
-        a.add(new Cookie(-iteratio, mixedSweetness));
+        a.add(new Cookie(-iteration, mixedSweetness));
     }
 
     static class Cookie implements Comparable<Cookie> {
